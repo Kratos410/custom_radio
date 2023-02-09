@@ -105,6 +105,7 @@ public class RadioTest {
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void upVolumeAbroad() {
         Radio radio = new Radio();
@@ -114,8 +115,9 @@ public class RadioTest {
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void upVolumeUpUpperBound() {
+    public void upVolumeUpUperBound() {
         Radio radio = new Radio();
         radio.currentVolume = 10;
         radio.increaseVolume();
@@ -123,24 +125,27 @@ public class RadioTest {
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void downVolume() {
         Radio radio = new Radio();
-        radio.currentVolume = 5;
+        radio.currentVolume = 10;
         radio.reduceVolume();
-        int expected = 4;
+        int expected = 9;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void downVolumeAbroad() {
         Radio radio = new Radio();
-        radio.currentVolume = -5;
+        radio.currentVolume = 15;
         radio.reduceVolume();
         int expected = 0;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void downVolumeLowerBound() {
         Radio radio = new Radio();
