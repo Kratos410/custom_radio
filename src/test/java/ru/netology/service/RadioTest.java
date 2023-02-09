@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 
 
 public class RadioTest {
+    Radio radio = new Radio();
 
     @Test
 
     public void manualStationInput() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(25);
         radio.setManualStationSelection(4);
         int expected = 4;
         int actual = radio.getCurrentRadioStationNumber();
@@ -19,7 +20,7 @@ public class RadioTest {
 
     @Test
     public void manualStationInputPositiveValues() {
-        Radio radio = new Radio();
+
         radio.setManualStationSelection(22);
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
@@ -28,7 +29,7 @@ public class RadioTest {
 
     @Test
     public void manualStationInputNegativeValues() {
-        Radio radio = new Radio();
+
         radio.setManualStationSelection(-7);
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
@@ -37,8 +38,8 @@ public class RadioTest {
     }
 
     @Test
-    public void nextChanneUpperBound() {
-        Radio radio = new Radio();
+    public void nextChannelUpperBound() {
+
         radio.currentRadioStationNumber = 9;
         radio.nextRadioStationNumber();
         int expected = 0;
@@ -48,17 +49,17 @@ public class RadioTest {
 
     @Test
     public void nextChannelAbroad() {
-        Radio radio = new Radio();
+
         radio.currentRadioStationNumber = -8;
         radio.nextRadioStationNumber();
-        int expected = 1;
+        int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void nextChannel() {
-        Radio radio = new Radio();
+
         radio.currentRadioStationNumber = 2;
         radio.nextRadioStationNumber();
         int expected = 3;
@@ -68,7 +69,7 @@ public class RadioTest {
 
     @Test
     public void prevChannel() {
-        Radio radio = new Radio();
+
         radio.currentRadioStationNumber = 5;
         radio.prevRadioStationNumber();
         int expected = 4;
@@ -78,17 +79,17 @@ public class RadioTest {
 
     @Test
     public void prevChannelAbroad() {
-        Radio radio = new Radio();
+
         radio.currentRadioStationNumber = 22;
         radio.prevRadioStationNumber();
-        int expected = 1;
+        int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void prevChannelLowerBound() {
-        Radio radio = new Radio();
+
         radio.currentRadioStationNumber = 0;
         radio.prevRadioStationNumber();
         int expected = 9;
@@ -98,7 +99,7 @@ public class RadioTest {
 
     @Test
     public void upVolume() {
-        Radio radio = new Radio();
+
         radio.currentVolume = 0;
         radio.increaseVolume();
         int expected = 1;
@@ -108,7 +109,7 @@ public class RadioTest {
 
     @Test
     public void upVolumeAbroad() {
-        Radio radio = new Radio();
+
         radio.currentVolume = -1;
         radio.increaseVolume();
         int expected = 0;
@@ -118,17 +119,17 @@ public class RadioTest {
 
     @Test
     public void upVolumeUpUperBound() {
-        Radio radio = new Radio();
-        radio.currentVolume = 10;
+
+        radio.currentVolume = 100;
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void downVolume() {
-        Radio radio = new Radio();
+
         radio.currentVolume = 10;
         radio.reduceVolume();
         int expected = 9;
@@ -138,8 +139,8 @@ public class RadioTest {
 
     @Test
     public void downVolumeAbroad() {
-        Radio radio = new Radio();
-        radio.currentVolume = 15;
+
+        radio.currentVolume = 150;
         radio.reduceVolume();
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -148,7 +149,7 @@ public class RadioTest {
 
     @Test
     public void downVolumeLowerBound() {
-        Radio radio = new Radio();
+
         radio.currentVolume = 0;
         radio.reduceVolume();
         int expected = 0;
