@@ -1,8 +1,8 @@
 package ru.netology.service;
 
 public class Radio {
-    public int currentRadioStationNumber; //текущий номер станции
-    public int currentVolume;  // текущая громкость
+    protected int currentRadioStationNumber; //текущий номер станции
+    protected int currentVolume;  // текущая громкость
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -24,19 +24,19 @@ public class Radio {
 
 
     public void nextRadioStationNumber() {  //выбор станции кнопкой Next
-        if ( currentRadioStationNumber >= 0 && currentRadioStationNumber < 9) {
+        if (currentRadioStationNumber >= 0 && currentRadioStationNumber < 9) {
             currentRadioStationNumber++;
-        } else if ( currentRadioStationNumber == 9) {
+        } else if (currentRadioStationNumber == 9) {
             currentRadioStationNumber = 0;
         } else {
-            currentRadioStationNumber =1 ;
+            currentRadioStationNumber = 1;
         }
     }
 
     public void prevRadioStationNumber() {
-        if ( currentRadioStationNumber > 0 && currentRadioStationNumber <= 9) {
+        if (currentRadioStationNumber > 0 && currentRadioStationNumber <= 9) {
             currentRadioStationNumber--;
-        } else if ( currentRadioStationNumber == 0) {
+        } else if (currentRadioStationNumber == 0) {
             currentRadioStationNumber = 9;
         } else {
             currentRadioStationNumber = 1;
@@ -44,21 +44,21 @@ public class Radio {
     }
 
     public void increaseVolume() {        // повышение громкости
-        if ( currentVolume < 10 && currentVolume >= 0) {
-            currentVolume = currentVolume+1;
+        if (currentVolume < 10 && currentVolume >= 0) {
+            currentVolume = currentVolume + 1;
         } else if (currentVolume == 10) {
             currentVolume = 10;
-        }else{
+        } else {
             currentVolume = 0;
         }
     }
 
     public void reduceVolume() {    //понижение громкости
         if (currentVolume <= 10 && currentVolume > 0) {
-            currentVolume = currentVolume-1;
+            currentVolume = currentVolume - 1;
         } else if (currentVolume == 0) {
             return;
-        }else{
+        } else {
             currentVolume = 0;
         }
 
