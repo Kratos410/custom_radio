@@ -54,7 +54,7 @@ public class Radio {
         }
     }
 
-    public void increaseVolume() {        // повышение громкости
+    public void increaseVolume() {       // повышение громкости
         if (currentVolume >= minVolume && currentVolume < maxVolume ) {
             currentVolume = currentVolume + 1;
             return;
