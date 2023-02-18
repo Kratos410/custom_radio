@@ -9,23 +9,32 @@ public class Radio {
     protected int minVolume = 0;
     protected int maxVolume = 100;
 
-    public Radio(int size) {
-       maximumNumberOfChannels = minimumNumberOfChannels + size;
+    public int getCurrentRadioStationNumber() {
+        return currentRadioStationNumber;
     }
 
-    public Radio() {
-        maximumNumberOfChannels = 9;
+    public void setCurrentRadioStationNumber(int currentRadioStationNumber) {
+        this.currentRadioStationNumber = currentRadioStationNumber;
     }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public int getCurrentRadioStationNumber() {
-        return currentRadioStationNumber;
+    public void setCurrentVolume(int currentVolume) {
+        this.currentVolume = currentVolume;
     }
 
-    public void setManualStationSelection(int manualStationInput) {      // ручной выбор станции
+    public Radio(int size) {
+        maximumNumberOfChannels = minimumNumberOfChannels + size;
+    }
+
+    public Radio() {
+        maximumNumberOfChannels = 9;
+    }
+
+
+    public void manualStationSelection(int manualStationInput) {      // ручной выбор станции
         if (manualStationInput >= minimumNumberOfChannels && manualStationInput <= maximumNumberOfChannels) {
             currentRadioStationNumber = manualStationInput;
         } else {
@@ -55,7 +64,7 @@ public class Radio {
     }
 
     public void increaseVolume() {       // повышение громкости
-        if (currentVolume >= minVolume && currentVolume < maxVolume ) {
+        if (currentVolume >= minVolume && currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
             return;
         } else if (currentVolume == maxVolume) {
@@ -67,7 +76,7 @@ public class Radio {
     }
 
     public void reduceVolume() {    //понижение громкости
-        if (currentVolume > minVolume && currentVolume <= maxVolume ) {
+        if (currentVolume > minVolume && currentVolume <= maxVolume) {
             currentVolume = currentVolume - 1;
         } else if (currentVolume == minVolume) {
             return;

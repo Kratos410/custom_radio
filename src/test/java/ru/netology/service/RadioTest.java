@@ -11,7 +11,7 @@ public class RadioTest {
 
     public void manualStationInput() {
         Radio radio = new Radio(25);
-        radio.setManualStationSelection(4);
+        radio.manualStationSelection(4);
         int expected = 4;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
@@ -21,7 +21,7 @@ public class RadioTest {
     @Test
     public void manualStationInputPositiveValues() {
 
-        radio.setManualStationSelection(22);
+        radio.manualStationSelection(22);
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
@@ -30,7 +30,7 @@ public class RadioTest {
     @Test
     public void manualStationInputNegativeValues() {
 
-        radio.setManualStationSelection(-7);
+        radio.manualStationSelection(-7);
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
