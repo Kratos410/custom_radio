@@ -3,7 +3,6 @@ package ru.netology.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 public class RadioTest {
     Radio radio = new Radio();
 
@@ -11,7 +10,7 @@ public class RadioTest {
 
     public void manualStationInput() {
         Radio radio = new Radio(25);
-        radio.manualStationSelection(4);
+        radio.setManualStationSelection(4);
         int expected = 4;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
@@ -21,7 +20,7 @@ public class RadioTest {
     @Test
     public void manualStationInputPositiveValues() {
 
-        radio.manualStationSelection(22);
+        radio.setManualStationSelection(22);
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
@@ -30,7 +29,7 @@ public class RadioTest {
     @Test
     public void manualStationInputNegativeValues() {
 
-        radio.manualStationSelection(-7);
+        radio.setManualStationSelection(-7);
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
@@ -40,7 +39,7 @@ public class RadioTest {
     @Test
     public void nextChannelUpperBound() {
 
-        radio.currentRadioStationNumber = 9;
+        radio.setCurrentRadioStationNumber(9);
         radio.nextRadioStationNumber();
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
