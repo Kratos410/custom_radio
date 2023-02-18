@@ -50,7 +50,7 @@ public class RadioTest {
     @Test
     public void nextChannelAbroad() {
 
-        radio.currentRadioStationNumber = -8;
+        radio.setCurrentRadioStationNumber(-8);
         radio.nextRadioStationNumber();
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
@@ -60,7 +60,7 @@ public class RadioTest {
     @Test
     public void nextChannel() {
 
-        radio.currentRadioStationNumber = 2;
+        radio.setCurrentRadioStationNumber(2);
         radio.nextRadioStationNumber();
         int expected = 3;
         int actual = radio.getCurrentRadioStationNumber();
@@ -70,9 +70,9 @@ public class RadioTest {
     @Test
     public void prevChannel() {
 
-        radio.currentRadioStationNumber = 5;
+        radio.setCurrentRadioStationNumber(6);
         radio.prevRadioStationNumber();
-        int expected = 4;
+        int expected = 5;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
@@ -80,7 +80,7 @@ public class RadioTest {
     @Test
     public void prevChannelAbroad() {
 
-        radio.currentRadioStationNumber = 22;
+        radio.setCurrentRadioStationNumber(22);
         radio.prevRadioStationNumber();
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
@@ -90,7 +90,7 @@ public class RadioTest {
     @Test
     public void prevChannelLowerBound() {
 
-        radio.currentRadioStationNumber = 0;
+        radio.setCurrentVolume(0);
         radio.prevRadioStationNumber();
         int expected = 9;
         int actual = radio.getCurrentRadioStationNumber();
@@ -100,7 +100,7 @@ public class RadioTest {
     @Test
     public void upVolume() {
 
-        radio.currentVolume = 0;
+        radio.setCurrentVolume(0);
         radio.increaseVolume();
         int expected = 1;
         int actual = radio.getCurrentVolume();
@@ -110,7 +110,7 @@ public class RadioTest {
     @Test
     public void upVolumeAbroad() {
 
-        radio.currentVolume = -1;
+        radio.setCurrentVolume(-1);
         radio.increaseVolume();
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -120,7 +120,7 @@ public class RadioTest {
     @Test
     public void upVolumeUpUperBound() {
 
-        radio.currentVolume = 100;
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
         int expected = 100;
         int actual = radio.getCurrentVolume();
@@ -130,7 +130,7 @@ public class RadioTest {
     @Test
     public void downVolume() {
 
-        radio.currentVolume = 10;
+        radio.setCurrentVolume(10);
         radio.reduceVolume();
         int expected = 9;
         int actual = radio.getCurrentVolume();
@@ -140,7 +140,7 @@ public class RadioTest {
     @Test
     public void downVolumeAbroad() {
 
-        radio.currentVolume = 150;
+        radio.setCurrentVolume(150);
         radio.reduceVolume();
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -150,7 +150,7 @@ public class RadioTest {
     @Test
     public void downVolumeLowerBound() {
 
-        radio.currentVolume = 0;
+        radio.setCurrentVolume(0);
         radio.reduceVolume();
         int expected = 0;
         int actual = radio.getCurrentVolume();

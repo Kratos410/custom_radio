@@ -2,12 +2,21 @@ package ru.netology.service;
 
 public class Radio {
     protected int currentRadioStationNumber; //текущий номер станции
+    protected int currentVolume;  // текущая громкость
     protected int minimumNumberOfChannels = 0;
     protected int maximumNumberOfChannels;
-    protected int currentVolume;  // текущая громкость
 
     protected int minVolume = 0;
     protected int maxVolume = 100;
+
+    public Radio() {
+        maximumNumberOfChannels = 9;
+    }
+
+
+    public Radio(int size) {
+        maximumNumberOfChannels = minimumNumberOfChannels + size;
+    }
 
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
@@ -23,14 +32,6 @@ public class Radio {
 
     public void setCurrentVolume(int currentVolume) {
         this.currentVolume = currentVolume;
-    }
-
-    public Radio(int size) {
-        maximumNumberOfChannels = minimumNumberOfChannels + size;
-    }
-
-    public Radio() {
-        maximumNumberOfChannels = 9;
     }
 
 
