@@ -3,6 +3,7 @@ package ru.netology.service;
 public class Radio {
     protected int currentRadioStationNumber; //текущий номер станции
     protected int currentVolume;  // текущая громкость
+
     protected int minimumNumberOfChannels = 0;
     protected int maximumNumberOfChannels;
 
@@ -26,6 +27,7 @@ public class Radio {
         this.currentRadioStationNumber = currentRadioStationNumber;
     }
 
+
     public int getCurrentVolume() {
         return currentVolume;
     }
@@ -37,52 +39,57 @@ public class Radio {
 
     public void manualStationSelection(int manualStationInput) {      // ручной выбор станции
         if (manualStationInput >= minimumNumberOfChannels && manualStationInput <= maximumNumberOfChannels) {
+
+
             currentRadioStationNumber = manualStationInput;
-        } else {
-            currentRadioStationNumber = minimumNumberOfChannels;
-        }
-    }
-
-
-    public void nextRadioStationNumber() {  //выбор станции кнопкой Next
-        if (currentRadioStationNumber >= minimumNumberOfChannels && currentRadioStationNumber < maximumNumberOfChannels) {
-            currentRadioStationNumber++;
-        } else if (currentRadioStationNumber == maximumNumberOfChannels) {
-            currentRadioStationNumber = minimumNumberOfChannels;
         } else {
             currentRadioStationNumber = 0;
         }
     }
 
-    public void prevRadioStationNumber() {
-        if (currentRadioStationNumber > minimumNumberOfChannels && currentRadioStationNumber <= maximumNumberOfChannels) {
-            currentRadioStationNumber--;
-        } else if (currentRadioStationNumber == minimumNumberOfChannels) {
-            currentRadioStationNumber = maximumNumberOfChannels;
+
+    public void nextRadioStationNumber() {  //выбор станции кнопкой Next
+        if (currentRadioStationNumber >= 0 && currentRadioStationNumber < 9) {
+            currentRadioStationNumber++;
+        } else if (currentRadioStationNumber == 9) {
+            currentRadioStationNumber = 0;
         } else {
-            currentRadioStationNumber = minimumNumberOfChannels;
+            currentRadioStationNumber = 1;
         }
     }
 
+    public void prevRadioStationNumber() {
+        if (currentRadioStationNumber > 0 && currentRadioStationNumber <= 9) {
+            currentRadioStationNumber--;
+        } else if (currentRadioStationNumber == 0) {
+            currentRadioStationNumber = 9;
+        } else {
+            currentRadioStationNumber = 1;
+        }
+    }
+
+
     public void increaseVolume() {       // повышение громкости
         if (currentVolume >= minVolume && currentVolume < maxVolume) {
+
+
             currentVolume = currentVolume + 1;
-            return;
-        } else if (currentVolume == maxVolume) {
-            return;
+        } else if (currentVolume == 10) {
+            currentVolume = 10;
         } else {
-            currentVolume = minVolume;
-            return;
+            currentVolume = 0;
         }
     }
 
     public void reduceVolume() {    //понижение громкости
+
         if (currentVolume > minVolume && currentVolume <= maxVolume) {
+
             currentVolume = currentVolume - 1;
-        } else if (currentVolume == minVolume) {
+        } else if (currentVolume == 0) {
             return;
         } else {
-            currentVolume = minVolume;
+            currentVolume = 0;
         }
 
     }
